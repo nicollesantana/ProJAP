@@ -139,3 +139,17 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+.centerPosition{
+  text-align: center;
+  margin-top: 30px;
+ }
+ .grid{
+  border-left: 30px;
+  border-right: 30px;
+  padding: 40px,40px;
+ }
+ .alignRight{
+   text-align: right;
+   padding: 20px;
+   padding-right: 100px; 
+}
