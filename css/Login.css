@@ -1,44 +1,41 @@
 html,
 body {
     height: 100%;
+    text-align: center;
 }
 
-body{
+body {
     /* display: flexbox; */
     /* text-align: center; */
     /* padding: 100px; */
     overflow: hidden;
     background-color: rgba(171, 190, 241, 0.144);
-         
 }
+
 .grid {
     display: grid;
-    grid-template-columns: [x0] 1fr [x1] 1fr [x2] ;
-    grid-template-rows: [y0] 1fr [y1] 1fr [y2] ;
+    grid-template-columns: [x0] 1fr [x1] 1fr [x2];
+    grid-template-rows: [y0] 1fr [y1] 1fr [y2];
     grid-gap: 20px;
-   
-    
-  }
-  .img1 {
+}
+
+.img1 {
     grid-column: x0 / x1;
     grid-row: y0 / y1;
-    
-  }
-  
-  .img2 {
+}
+
+.img2 {
     grid-column: x0 / x1;
     grid-row: y1 / y2;
     color: white;
-    
-  }
- 
-  
-  .login {
+}
+
+.login {
     grid-column: x1 / x2;
     grid-row: y0 / y2;
-  }
+}
 
-   /* body {
+/* body {
     display: -ms-flexbox;
      display: flex; 
     -ms-flex-align: center;
@@ -56,8 +53,8 @@ body{
     align-items: center;
     overflow: hidden;
 }   */
-  
-p{
+
+p {
     color: lightgoldenrodyellow;
 }
 
@@ -80,7 +77,6 @@ input {
     border-radius: 24px;
     color: lavender;
     transition: 0.25s;
-
 }
 
 input[type="text"]:focus,
@@ -100,7 +96,6 @@ input[type="submit"] {
     margin-bottom: 0;
     height: 35px;
     width: 130px;
-
 }
 
 input[type="submit"]:hover {
@@ -112,16 +107,17 @@ input[type="submit"]:active {
 }
 
 a:hover {
-     color:#fca714; 
-     text-decoration:none; 
-     cursor:pointer;  
+    color: #fca714;
+    text-decoration: none;
+    cursor: pointer;
 }
-.signin {
+
+/* .signin {
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: auto;
-}
+} */
 
 .form-box {
     width: 320px;
@@ -133,54 +129,45 @@ a:hover {
     max-width: 400px;
     border-radius: 20px;
     margin-top: 80px;
-    
-   
 }
-/* .container{
-    margin-top: 50px;
-    display: inline-flex;
-    border: red solid 3px;
-    height: 300px;
-    
- } 
-*/
-/* .container2{
+
+.contButton {
     margin-top: 30px;
-    display: inline-flex;
     text-align: center;
-    margin: 25px, 25px;
-   } */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .link {
-    
+
     font-size: 15px;
     font-style: italic;
     color: #fdfdfd;
     text-decoration: none;
 }
 
-.img{
-    height: 300px; 
+.img {
+    height: 300px;
     width: 900px;
     margin-left: 150px;
     margin-top: 30px;
-  
 }
 
-.slider{
+.slider {
     /* Con overflow hidden hace que solo se puestre un imagen a la vez en el slider */
     overflow: hidden;
-     /* aqui configuramos el tamaño del slider con width */
-     height: 380px; 
-     width: 900px;
+    /* aqui configuramos el tamaño del slider con width */
+    height: 380px;
+    width: 900px;
     position: absolute;
     margin-left: 150px;
-   
-  }
-.slider figure{
- position: relative; 
+}
+
+.slider figure {
+    position: relative;
     width: 500%;
-      /* con margin se colocan las imagenes una al lado de la otra */
+    /* con margin se colocan las imagenes una al lado de la otra */
     margin: 0;
     left: 0;
     /* tiempo de transicion en cada imagen */
@@ -190,21 +177,21 @@ a:hover {
     /* aqui cambiamos la curva de la animacion */
     animation-timing-function: linear;
 }
-.slider figure img{
+
+.slider figure img {
     width: 20%;
     float: left;
 }
+
 /* esto son las paradas que realiza el slider */
-@keyframes slider{
-    0% {left:0;}
-    20% {left:0;}
-    25% {left:-100%;}
-    45% {left:-100%;}
-    50% {left:-200%;}
-    70% {left:-200%;}
-    75% {left:-300%;}
-    95% {left:-300%;}
-    100% {left:-400%;}
-
+@keyframes slider {
+    0% { left: 0;}
+    20% {left: 0;}
+    25% {left: -100%;}
+    45% {left: -100%;}
+    50% {left: -200%;}
+    70% {left: -200%;}
+    75% {left: -300%;}
+    95% {left: -300%;}
+    100% {left: -400%;}
 }
-
