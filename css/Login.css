@@ -4,11 +4,13 @@ body {
 }
 
 body{
-    display: flexbox;
-    align-items: center;
-    padding-top: 100px;
-   
-   
+    /* display: flexbox; */
+    /* text-align: center; */
+    /* padding: 100px; */
+    overflow: hidden;
+    background-color: rgba(171, 190, 241, 0.144);
+    
+    
 }
 
    /* body {
@@ -30,35 +32,15 @@ body{
     overflow: hidden;
 }   */
   
-
 p{
     color: lightgoldenrodyellow;
-}
-h2{
-text-align: center;
-}
-.signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-}
-
-.form-box {
-    width: 300px;
-    padding: 40px;
-    background: #363535;
-    text-align: center;
-    align-items: center;
-    margin: auto;
-    max-width: 400px;
-    border-radius: 20px;
 }
 
 h2 {
     font-weight: 500;
     margin-bottom: 20px;
     color: #a3a19c;
+    text-align: center;
     /* text-transform: uppercase; */
 }
 
@@ -103,16 +85,100 @@ input[type="submit"]:hover {
 input[type="submit"]:active {
     transform: scale(0.95s);
 }
-.link {
-    
-    font-size: 15px;
-    color: #fdfdfd;
-    text-decoration: none;
-}
 
-a:hover 
-{
+a:hover {
      color:#fca714; 
      text-decoration:none; 
      cursor:pointer;  
 }
+.signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-box {
+    width: 320px;
+    padding: 40px;
+    background: #363535;
+    text-align: center;
+    align-items: center;
+    margin: 30px;
+    max-width: 400px;
+    border-radius: 20px;
+    margin-top: 0px;
+}
+.container{
+    margin-top: 50px;
+    display: inline-flex;
+    border: red solid 3px;
+    height: 300px;
+    /* text-align: center; */
+}
+.container2{
+    margin-top: 30px;
+    display: inline-flex;
+    text-align: center;
+    margin: 25px, 25px;
+   }
+
+.link {
+    
+    font-size: 15px;
+    font-style: italic;
+    color: #fdfdfd;
+    text-decoration: none;
+}
+
+.img{
+    float: left;
+    height: 300px; 
+    width: 90%;
+    margin-left: 30px;
+}
+
+.slider{
+    /* Con overflow hidden hace que solo se puestre un imagen a la vez en el slider */
+    overflow: hidden;
+     /* aqui configuramos el tamaño del slider con width */
+    width: 40%;
+    position: absolute;
+    margin-top: 100px;
+    border: 5px solid red;
+    /* z-index: 2; */
+    /* margin: 80px 80px; */
+    
+    
+}
+.slider figure{
+ position: relative; 
+    width: 500%;
+      /* con margin se colocan las imagenes una al lado de la otra */
+    margin: 0;
+    left: 0;
+    /* tiempo de transicion en cada imagen */
+    animation: 20s slider infinite;
+    /* evitando un cambio brusco de la ultima a la primera es un orden creciente y decreciente */
+    animation-direction: alternate-reverse;
+    /* aqui cambiamos la curva de la animacion */
+    animation-timing-function: linear;
+}
+.slider figure img{
+    width: 20%;
+    float: left;
+}
+/* esto son las paradas que realiza el slider */
+@keyframes slider{
+    0% {left:0;}
+    20% {left:0;}
+    25% {left:-100%;}
+    45% {left:-100%;}
+    50% {left:-200%;}
+    70% {left:-200%;}
+    75% {left:-300%;}
+    95% {left:-300%;}
+    100% {left:-400%;}
+
+}
+
