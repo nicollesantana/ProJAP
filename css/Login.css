@@ -9,9 +9,34 @@ body{
     /* padding: 100px; */
     overflow: hidden;
     background-color: rgba(171, 190, 241, 0.144);
-    
-    
+         
 }
+.grid {
+    display: grid;
+    grid-template-columns: [x0] 1fr [x1] 1fr [x2] ;
+    grid-template-rows: [y0] 1fr [y1] 1fr [y2] ;
+    grid-gap: 20px;
+   
+    
+  }
+  .img1 {
+    grid-column: x0 / x1;
+    grid-row: y0 / y1;
+    
+  }
+  
+  .img2 {
+    grid-column: x0 / x1;
+    grid-row: y1 / y2;
+    color: white;
+    
+  }
+ 
+  
+  .login {
+    grid-column: x1 / x2;
+    grid-row: y0 / y2;
+  }
 
    /* body {
     display: -ms-flexbox;
@@ -104,24 +129,27 @@ a:hover {
     background: #363535;
     text-align: center;
     align-items: center;
-    margin: 30px;
+    margin-left: 50px;
     max-width: 400px;
     border-radius: 20px;
-    margin-top: 0px;
+    margin-top: 80px;
+    
+   
 }
-.container{
+/* .container{
     margin-top: 50px;
     display: inline-flex;
     border: red solid 3px;
     height: 300px;
-    /* text-align: center; */
-}
-.container2{
+    
+ } 
+*/
+/* .container2{
     margin-top: 30px;
     display: inline-flex;
     text-align: center;
     margin: 25px, 25px;
-   }
+   } */
 
 .link {
     
@@ -132,25 +160,23 @@ a:hover {
 }
 
 .img{
-    float: left;
     height: 300px; 
-    width: 90%;
-    margin-left: 30px;
+    width: 900px;
+    margin-left: 150px;
+    margin-top: 30px;
+  
 }
 
 .slider{
     /* Con overflow hidden hace que solo se puestre un imagen a la vez en el slider */
     overflow: hidden;
      /* aqui configuramos el tamaño del slider con width */
-    width: 40%;
+     height: 380px; 
+     width: 900px;
     position: absolute;
-    margin-top: 100px;
-    border: 5px solid red;
-    /* z-index: 2; */
-    /* margin: 80px 80px; */
-    
-    
-}
+    margin-left: 150px;
+   
+  }
 .slider figure{
  position: relative; 
     width: 500%;
