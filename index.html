@@ -120,12 +120,6 @@
 </div>
   <!-- Script de Google -->
   <script>
-//     function onSignIn() {
-//   const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
-//   const profile = googleUser.getBasicProfile();
-
-//   // do stuff here
-// }
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
