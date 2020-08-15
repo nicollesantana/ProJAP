@@ -144,7 +144,7 @@ a:hover {
 .slider figure {
     position: relative;
     width: 500%;
-    margin-top: 20px;
+    margin-top: 40px;
     /* con margin se colocan las imagenes una al lado de la otra */
     margin: 0;
     left: 0;
