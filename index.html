@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id"
+    content="115494304448-guboje64kf2usokrifr6ctge836ld1ku.apps.googleusercontent.com">
   <title>eMercado -Login</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -18,10 +20,8 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel=" stylesheet " href=" https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css ">
   <link href="css/login.css" rel="stylesheet">
-  <!-- Scripts Google -->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id"
-    content="115494304448-guboje64kf2usokrifr6ctge836ld1ku.apps.googleusercontent.com">
+ 
+  
 </head>
 
 <body>
@@ -30,6 +30,7 @@
     <div class="img1">
       <img src="img/login.png" class="img">
     </div>
+
     <div class="img2">
       <div class="slider">
         <figure>
@@ -40,6 +41,7 @@
         </figure>
       </div>
     </div>
+
     <div class="login">
       <form action="portada.html" class="form-box animated bounceInUp">
         <h2>Inicio</h2>
@@ -49,15 +51,14 @@
         <input type="submit" value="Aceptar" name=""><br><br>
         <p>¿No tienes cuenta? | <a href="#" data-toggle="modal" data-target="#ModalRegistrar"
             data-whatever="@mdo">Regístrate</a></p>
-        <a class="link" href="registerUser" target="_blank" data-toggle="modal" data-target="#ModalRecuperarPass">¿Olvidó su contraseña?</a>
+        <a class="link" href="registerUser" target="_blank" data-toggle="modal" data-target="#RecuperarPass">¿Olvidó su contraseña?</a>
         <div class="g-signin2 contButton" data-onsuccess="onSignIn"></div>
       </form>
-    </div>
-  
+      </div>
   </div>
+ 
 
-
-  <!-- Pop ups de registro con boostrap -->
+  <!-- Pop ups de registro con bootstrap -->
   <div class="modal fade" id="ModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -94,7 +95,7 @@
     </div>
   </div>
 <!-- Formulario de recuperacion de contraseña -->
-<div class="modal fade" id="ModalRecuperarPass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="RecuperarPass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -119,6 +120,12 @@
 </div>
   <!-- Script de Google -->
   <script>
+//     function onSignIn() {
+//   const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
+//   const profile = googleUser.getBasicProfile();
+
+//   // do stuff here
+// }
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -128,7 +135,8 @@
     }
   </script>
 
-  <script src="js/init.js"></script>
+   <!-- Scripts Google -->
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="js/login.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
