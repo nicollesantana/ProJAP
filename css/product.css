@@ -1,0 +1,16 @@
+.grid {
+    display: grid;
+    /* grid-gap: 20px; */
+    grid-template-areas: " box-search box-filter";
+                         
+    }
+  
+  .box-search { grid-area: search;  height: 100px;width: 700px; }
+  .box-filter { grid-area: filter; width: 700px;}
+ 
+.fox-filter{
+    width: 700px;
+    margin-left: 230px; 
+    margin-top: 20px; 
+  
+}

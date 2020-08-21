@@ -29,15 +29,76 @@
     <h2>Producto</h2>
     <p>Aquí veras todos los productos de la categoría <b>Auto</b></p>
   </div>
-  <div class="alignRight">
-    <label>Precio</label>
-    <input type="text" name="precio" value="" class="from-control" placeholder="min">
-    <input type="number" value="" name="cantidad" class="from-control " placeholder="max">
-    <input type="submit" name="accion" value="Filtrar" class="btn btn-outline-info ">
-  </div>
-  <!-- Peticion jason products -->
-  <div id="product-list-container" class="container p-5">
+  
+  
 
+  <!-- filtros de la pagina category -->
+  <div class="container">
+    <div class="row">
+        <div class="col text-right">
+          
+          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                <!-- <label class="btn btn-light active" id="sortAsc" >
+                    <input type="radio" name="options" autocomplete="off" checked>A-Z
+                </label>
+                <label class="btn btn-light" id="sortDesc" >
+                    <input type="radio" name="options" autocomplete="off">Z-A
+                </label>
+                <label class="btn btn-light" id="sortByCount" >
+                    <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
+                </label> -->
+                <!-- filtos por costo y relevancia -->
+                <div role="group" aria-label="Button group with nested dropdown">
+                  <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Ordenar por:
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                      <a class="dropdown-item" id="sortAsc" href="#">Menor Precio</a>
+                      <a class="dropdown-item" id="sortDesc"href="#">Mayor Precio</a>
+                      <a class="dropdown-item" id="sortByCount" href="#">Mayor Relevancia</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- fin de filtro costo y relevancia -->
+            </div>
+          </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-md-6"></div>
+        <div class="col-md-6 col-sm-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-right my-2">Cant.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+    </div>
+    <div class="container">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button> 
+      </form>
+    </div>
+    
+
+      
+    <!-- Peticion jason products -->
+  <div id="product-list-container" class="container p-5">
   </div>
 
   <!-- <div class="container p-5">
