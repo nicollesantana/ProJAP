@@ -1,11 +1,12 @@
 const ORDER_ASC_BY_COST = "$a";
 const ORDER_DESC_BY_COST = "$z";
-const ORDER_BY_PROD_COUNT = "Ref.";
+const ORDER_BY_SOLD_COUNT = "Rel.";
 var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
-// var categoriesArray = [];
+var formulario = undefined;
+
 
 function sortCategories(criteria, array){
     let result = [];
@@ -22,7 +23,7 @@ function sortCategories(criteria, array){
             if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COUNT){
+    }else if (criteria === ORDER_BY_SOLD_COUNT){
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
@@ -37,32 +38,33 @@ function sortCategories(criteria, array){
 }
 
 
-function showCategoriesList(array) {
+function showCategoriesList() {
 
     let htmlContentToAppend = "";
    
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
-        ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+        ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
         
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <a href="category-info.html" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">` + category.name + `-` + category.currency + ` ` + category.cost + `</h4>
+                        <h4 class="mb-1">` + category.name + `</h4>
                         <small class="text-muted">` + category.soldCount + ` artículos</small>
                         
                     </div>
-                    <p class="mb-1">` + category.description + `</p>
+                    <p class="mb-1">` + category.description + `</p><br>
+                    <p><b> ` + category.currency + `-` + category.cost + `</b><p>
                 </div>
             </div>
-        </div>
+        </a>
         `
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
         }
@@ -83,17 +85,46 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     showCategoriesList();
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+function search(){
+     
+    let htmlContentToAppend = "";
+    
+    for(let i = 0; i < currentCategoriesArray.length; i++){
+        let category = currentCategoriesArray[i];
+        let cadena = category.name.toLowerCase();
+       
+        if (cadena.indexOf(formulario) !== -1){
 
+            htmlContentToAppend += `
+            <a href="category-info.html" class="list-group-item list-group-item-action">
+            <div class="row">
+                <div class="col-3">
+                    <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">` + category.name + `</h4>
+                        <small class="text-muted">` + category.soldCount + ` artículos</small>
+                        
+                    </div>
+                    <p class="mb-1">` + category.description + `</p><br>
+                    <p><b> ` + category.currency + `-` + category.cost + `</b><p>
+                </div>
+            </div>
+        </a>
+        `
+        }
+
+        document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
+    
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             categoriesArray = resultObj.data;
             //Muestro las categorías ordenadas
-            // showCategoriesList(categoriesArray);
             sortAndShowCategories(ORDER_ASC_BY_COST, resultObj.data);
         }
     });
@@ -107,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     document.getElementById("sortByCount").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_BY_PROD_COUNT);
+        sortAndShowCategories(ORDER_BY_SOLD_COUNT);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
@@ -121,8 +152,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+      
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
@@ -139,8 +169,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
         else{
             maxCount = undefined;
         }
-        sortAndShowCategories(ORDER_ASC_BY_COST)
-        // showCategoriesList();
+        showCategoriesList();
+        console.log("hasta aqui llega")
+    });
+   
+    document.getElementById("editSearch").addEventListener("keyup", function(e){
+        e.preventDefault();
+        formulario = document.getElementById("editSearch").value;
+       
+        search();
+            
+    });
+    document.getElementById("boton").addEventListener("click", function(e){
+        e.preventDefault();
+        formulario = document.getElementById("editSearch").value;
+       
+        search();
+            
     });
 
 });
