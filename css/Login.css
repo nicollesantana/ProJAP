@@ -31,9 +31,10 @@ body {
                          "img2 login";
     }
   
-  .img1 { grid-area: img1;  height: 100px;width: 700px; }
+  .img1 { grid-area: img1;  height: 100px; width: 700px; }
   .img2 { grid-area: img2; width: 700px;}
   .login { grid-area: login;  width: 400px;}
+  
 
  
 p {

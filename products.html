@@ -18,11 +18,25 @@
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="portada.html">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+       <!-- menu custom -->
+       <div class="btn-group">
+        <button id="username" type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Mis Datos</a>
+          <a class="dropdown-item" href="#">Compras</a>
+          <a class="dropdown-item" href="#">Ventas</a>
+          <a class="dropdown-item" href="#">Mis Alertas</a>
+          <div class="dropdown-divider"></div>
+          <a id="logout" class="dropdown-item" href="#">Salir</a>
+        </div>
+      </div>
+      <!-- fin de menu custom -->
     </div>
   </nav>
   <div class="centerPosition">
@@ -30,24 +44,12 @@
     <p>Aquí veras todos los productos de la categoría <b>Auto</b></p>
   </div>
   
-  
-
-  <!-- filtros de la pagina category -->
   <div class="container">
     <div class="row">
         <div class="col text-right">
           
           <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-                <!-- <label class="btn btn-light active" id="sortAsc" >
-                    <input type="radio" name="options" autocomplete="off" checked>A-Z
-                </label>
-                <label class="btn btn-light" id="sortDesc" >
-                    <input type="radio" name="options" autocomplete="off">Z-A
-                </label>
-                <label class="btn btn-light" id="sortByCount" >
-                    <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
-                </label> -->
-                <!-- filtos por costo y relevancia -->
+              <!-- filtos por costo y relevancia -->
                 <div role="group" aria-label="Button group with nested dropdown">
                   <div class="btn-group" role="group">
                     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
@@ -95,20 +97,10 @@
       </form>
     </div>
     
-
-      
-    <!-- Peticion jason products -->
+   <!-- Peticion jason products -->
   <div id="product-list-container" class="container p-5">
   </div>
 
-  <!-- <div class="container p-5">
-      <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-        <h4 class="alert-heading">¡A trabajar! :)</h4>
-        <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
-        <hr>
-        <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-      </div>
-    </div> -->
   <footer class="text-muted bg-light">
     <div class="container">
       <p class="float-right">

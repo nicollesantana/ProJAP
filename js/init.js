@@ -46,7 +46,16 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   //validar si existe email en localstorach 
   const userEmail= localStorage.getItem('email');
+  const userName= document.getElementById('username');
+  const btnLogout= document.getElementById('logout');
+   
   if(userEmail === null){
-    window.location.href = '/';
+     window.location.href = '/index.html';
+     }
+  userName.innerText = userEmail;
+  btnLogout.onclick = function(){
+     localStorage.removeItem('email');
+     window.location.href = '/index.html';
   }
+
 });
