@@ -1,0 +1,34 @@
+@import"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+div.stars{
+    width: 270px;
+    display: inline-block;
+}
+input.star{
+    display: none;
+
+}
+label.star{
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #444;
+    transition: all 0.2s;
+}
+input.star:checked ~ label.star:before{
+    content: '\f005';
+    color:#fd4;
+    transition: all 0.2s;
+}
+input.star5:checked~ label.star:before{
+    color:#fe7;
+    text-shadow: 0 0 20px #952;
+
+}
+label.star:before{
+    content:'\f006';
+    font-family: FontAwesome;
+}
+input.star1:checked~ label.star:before{
+    color:#f62;
+}

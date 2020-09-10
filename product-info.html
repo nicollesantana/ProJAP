@@ -6,11 +6,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>Informacion del Producto</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- library for the stars -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <link href="css/product-info.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -23,9 +27,10 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-       <!-- menu custom -->
-       <div class="btn-group">
-        <button id="username" type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <!-- menu custom -->
+      <div class="btn-group">
+        <button id="username" type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Mis Datos</a>
@@ -39,14 +44,67 @@
       <!-- fin de menu custom -->
     </div>
   </nav>
+  <!-- Modificar estructura -->
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+    <h3 id="categoryName"></h3>
+    <hr class="my-3">
+    <dl>
+      <dt>Descripción</dt>
+      <dd>
+        <p id="categoryDescription"></p>
+      </dd>
+
+      <dt>Costo del producto</dt>
+      <dd>
+        <p id="productCount"></p>
+      </dd>
+
+      <dt>Cantidad de productos vendidos</dt>
+      <dd>
+        <p id="productCriteria"></p>
+      </dd>
+
+      <dt>Categoria</dt>
+      <dd>
+        <div id="categoria">
+        </div>
+      </dd>
+      <dt>Imágenes ilustrativas</dt>
+      <dd>
+        <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+        </div>
+      </dd>
+    </dl>
+    <div id="comentarios">
+      <div class="rw-ui-container"></div>
     </div>
-  </div>
+
+
+    <!-- <div>
+      Dejanos tu comentario
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div><br>
+    ¿Como calificas el producto?
+    <div id="calificar"></div>
+    <!-- Code stars -->
+    <!-- <form action="">
+      <div class="stars">
+        <input type="radio" name="star" class="star star5" id="star5"><label for="star5" class="star star5"></label>
+        <input type="radio" name="star" class="star star4" id="star4"><label for="star4" class="star star4"></label>
+        <input type="radio" name="star" class="star star3" id="star3"><label for="star3" class="star star3"></label>
+        <input type="radio" name="star" class="star star2" id="star2"><label for="star2" class="star star2"></label>
+        <input type="radio" name="star" class="star star1" id="star1"><label for="star1" class="star star1"></label>
+      </div>
+    </form>
+    <div>
+      <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+      <button type="button" class="btn btn-secondary btn-sm">Cancelar</button>
+    </div>
+  </div> -->
+
+
+ 
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
@@ -69,5 +127,50 @@
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
 </body>
+<script type="text/javascript">
+  (function (d, t, e, m) {
+
+    // Async Rating-Widget initialization.
+    window.RW_Async_Init = function () {
+
+      RW.init({
+        huid: "465829",
+        uid: "5aa3542ed4178eeb3a11e7d126d0df6e",
+        source: "website",
+        options: {
+          "advanced": {
+            "font": {
+              "size": "14px",
+              "italic": true,
+              "type": "\"Comic Sans MS\""
+            }
+          },
+          "size": "medium",
+          "type": "nero",
+          "lng": "es",
+          "style": "thumbs_bp",
+          "isDummy": false
+        }
+      });
+      RW.render();
+    };
+    // Append Rating-Widget JavaScript library.
+    var rw, s = d.getElementsByTagName(e)[0],
+      id = "rw-js",
+      l = d.location,
+      ck = "Y" + t.getFullYear() +
+      "M" + t.getMonth() + "D" + t.getDate(),
+      p = l.protocol,
+      f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
+      a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
+    if (d.getElementById(id)) return;
+    rw = d.createElement(e);
+    rw.id = id;
+    rw.async = true;
+    rw.type = "text/javascript";
+    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
+    s.parentNode.insertBefore(rw, s);
+  }(document, new Date(), "script", "rating-widget.com/"));
+</script>
 
 </html>
