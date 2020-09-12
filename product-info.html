@@ -46,7 +46,6 @@
   </nav>
   <!-- Modificar estructura -->
   <div class="container p-5">
-
     <h3 id="categoryName"></h3>
     <hr class="my-3">
     <dl>
@@ -76,36 +75,42 @@
         </div>
       </dd>
     </dl>
-    <div id="comentarios">
-      <div class="rw-ui-container"></div>
+
+    <div class="container p-5">
+      <h1>Comentarios</h1>
+      <hr>
+      <div class="container2">
+        <div id="comentarios">
+        </div>
+      </div>
     </div>
-
-
-    <!-- <div>
-      Dejanos tu comentario
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    
+   <hr>
+    <div>
+      Agregar comentario
+      <textarea class="form-control" id="Textarea1" rows="3"></textarea>
     </div><br>
     ¿Como calificas el producto?
-    <div id="calificar"></div>
+   
     <!-- Code stars -->
-    <!-- <form action="">
+    <div class="rat">
+    <form action="">
       <div class="stars">
-        <input type="radio" name="star" class="star star5" id="star5"><label for="star5" class="star star5"></label>
-        <input type="radio" name="star" class="star star4" id="star4"><label for="star4" class="star star4"></label>
-        <input type="radio" name="star" class="star star3" id="star3"><label for="star3" class="star star3"></label>
-        <input type="radio" name="star" class="star star2" id="star2"><label for="star2" class="star star2"></label>
-        <input type="radio" name="star" class="star star1" id="star1"><label for="star1" class="star star1"></label>
+        <input type="radio" name="star" class="star star5" id="star5b"><label for="star5b" class="star star5"></label>
+        <input type="radio" name="star" class="star star4" id="star4b"><label for="star4b" class="star star4"></label>
+        <input type="radio" name="star" class="star star3" id="star3b"><label for="star3b" class="star star3"></label>
+        <input type="radio" name="star" class="star star2" id="star2b"><label for="star2b" class="star star2"></label>
+        <input type="radio" name="star" class="star star1" id="star1b"><label for="star1b" class="star star1"></label>
       </div>
     </form>
-    <div>
-      <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+  </div>
+      <div>
+      <button type="button" class="btn btn-primary btn-sm"id="comentar">Comentar</button>
       <button type="button" class="btn btn-secondary btn-sm">Cancelar</button>
     </div>
-  </div> -->
+  </div> 
 
-
- 
-  <footer class="text-muted">
+ <footer class="text-muted">
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>
@@ -128,49 +133,49 @@
   <script src="js/product-info.js"></script>
 </body>
 <script type="text/javascript">
-  (function (d, t, e, m) {
+  // (function (d, t, e, m) {
 
-    // Async Rating-Widget initialization.
-    window.RW_Async_Init = function () {
+  //   // Async Rating-Widget initialization.
+  //   window.RW_Async_Init = function () {
 
-      RW.init({
-        huid: "465829",
-        uid: "5aa3542ed4178eeb3a11e7d126d0df6e",
-        source: "website",
-        options: {
-          "advanced": {
-            "font": {
-              "size": "14px",
-              "italic": true,
-              "type": "\"Comic Sans MS\""
-            }
-          },
-          "size": "medium",
-          "type": "nero",
-          "lng": "es",
-          "style": "thumbs_bp",
-          "isDummy": false
-        }
-      });
-      RW.render();
-    };
-    // Append Rating-Widget JavaScript library.
-    var rw, s = d.getElementsByTagName(e)[0],
-      id = "rw-js",
-      l = d.location,
-      ck = "Y" + t.getFullYear() +
-      "M" + t.getMonth() + "D" + t.getDate(),
-      p = l.protocol,
-      f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
-      a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
-    if (d.getElementById(id)) return;
-    rw = d.createElement(e);
-    rw.id = id;
-    rw.async = true;
-    rw.type = "text/javascript";
-    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
-    s.parentNode.insertBefore(rw, s);
-  }(document, new Date(), "script", "rating-widget.com/"));
+  //     RW.init({
+  //       huid: "465829",
+  //       uid: "5aa3542ed4178eeb3a11e7d126d0df6e",
+  //       source: "website",
+  //       options: {
+  //         "advanced": {
+  //           "font": {
+  //             "size": "14px",
+  //             "italic": true,
+  //             "type": "\"Comic Sans MS\""
+  //           }
+  //         },
+  //         "size": "medium",
+  //         "type": "nero",
+  //         "lng": "es",
+  //         "style": "thumbs_bp",
+  //         "isDummy": false
+  //       }
+  //     });
+  //     RW.render();
+  //   };
+  //   // Append Rating-Widget JavaScript library.
+  //   var rw, s = d.getElementsByTagName(e)[0],
+  //     id = "rw-js",
+  //     l = d.location,
+  //     ck = "Y" + t.getFullYear() +
+  //     "M" + t.getMonth() + "D" + t.getDate(),
+  //     p = l.protocol,
+  //     f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
+  //     a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
+  //   if (d.getElementById(id)) return;
+  //   rw = d.createElement(e);
+  //   rw.id = id;
+  //   rw.async = true;
+  //   rw.type = "text/javascript";
+  //   rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
+  //   s.parentNode.insertBefore(rw, s);
+  // }(document, new Date(), "script", "rating-widget.com/"));
 </script>
 
 </html>

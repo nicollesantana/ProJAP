@@ -48,34 +48,54 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
            let comentarios = resultObj.data;
             console.log(comentarios)
-
-            // let categoryNameHTML  = document.getElementById("comScore");
-            // let categoryDescriptionHTML = document.getElementById("categoryDescription");
-            // let productCountHTML = document.getElementById("productCount");
-            // let productCriteriaHTML = document.getElementById("productCriteria");
            
-        
-            // categoryNameHTML.innerHTML = comentarios.score;
-            // categoryDescriptionHTML.innerHTML = comentarios.description;
-            // productCountHTML.innerHTML = comentarios.user;
-            // productCriteriaHTML.innerHTML = comentarios.dateTime;
-          
             let htmlContentToAppend = "";
+       
 
             for(let i = 0; i < comentarios.length; i++){
                 let com = comentarios[i];
         
                 htmlContentToAppend += `
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="d-block mb-4 h-100">
-                        <img class="img-fluid img-thumbnail" src="` + com.score + `" alt="">
+                
+                <ul id="comments-list" class="comments-list">
+                <li>
+                  <div class="mail-level">
+                   <div class="avatar"><img src="img/`+i+`.PNG" alt=""></div>
+                    <div class="box">
+                      <div class="head-box">
+                       <h6 class="comment-name by-author"><a href="">`+com.user+`</a></h6>
+                        <span>`+com.dateTime+`&nbsp; &nbsp;</span>`
+            
+                        htmlContentToAppend += `<span><form action="">`
+                for (let j = 5; j >= 1; j--) {
+                    if (com.score != j)
+                        htmlContentToAppend += ` <input type="radio"name="` + i + `" class="star star` + j + `" id="star` + j + `"disabled><label for="star` + j + `" class="star star` + j + `"></label>`;
+                    else
+                        htmlContentToAppend += `<input type="radio"name="` + i + `" class="star star` + j + `" id="star` + j + `" checked disabled><label for="star` + j + `" class="star star` + j + `"></label>`;
+                }
+                htmlContentToAppend += `<br></form></span>
+                        <i class="fa fa-reply" aria-hidden="true"></i>
+                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        </div>
+                      <div class="content">
+                        `+com.description+`
+                      </div>
                     </div>
-                </div>
+                  </div>
+                  </li>
+                </ul>
+            
                 `
-        
-                document.getElementById("comentarios").innerHTML = htmlContentToAppend;
+               document.getElementById("comentarios").innerHTML = htmlContentToAppend;
                        
             }
         }
     });
+   
 }); 
+document.getElementById("comentar").addEventListener("click", function(e){
+    e.preventDefault();
+    location.reload();
+        
+});
