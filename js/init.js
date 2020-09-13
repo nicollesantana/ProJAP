@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function(e){
   userName.innerText = userEmail;
   btnLogout.onclick = function(){
      localStorage.removeItem('email');
+     localStorage.removeItem('datos');
      window.location.href = '/index.html';
   }
 

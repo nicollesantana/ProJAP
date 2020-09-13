@@ -1,10 +1,11 @@
 var productCategory = {};
+var localstoragecomentarios = {};
 
-function showInfoProduct(array){
+function showInfoProduct(array) {
 
     let htmlContentToAppend = "";
 
-    for(let i = 0; i < array.length; i++){
+    for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
 
         htmlContentToAppend += `
@@ -18,19 +19,19 @@ function showInfoProduct(array){
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
+
+function cargarcomentarios() {
+    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
             productCategory = resultObj.data;
             console.log(productCategory)
 
-            let categoryNameHTML  = document.getElementById("categoryName");
+            let categoryNameHTML = document.getElementById("categoryName");
             let categoryDescriptionHTML = document.getElementById("categoryDescription");
             let productCountHTML = document.getElementById("productCount");
             let productCriteriaHTML = document.getElementById("productCriteria");
             let productCategoryHTML = document.getElementById("categoria");
-        
+
             categoryNameHTML.innerHTML = productCategory.name;
             categoryDescriptionHTML.innerHTML = productCategory.description;
             productCountHTML.innerHTML = productCategory.cost;
@@ -43,43 +44,45 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     // comentarios
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-           let comentarios = resultObj.data;
-            console.log(comentarios)
-           
-            let htmlContentToAppend = "";
-       
 
-            for(let i = 0; i < comentarios.length; i++){
-                let com = comentarios[i];
-        
-                htmlContentToAppend += `
+    // carga en array los comentarios guardados en localstorage
+    localstoragecomentarios = JSON.parse(localStorage.getItem("datos"));
+    console.log(localstoragecomentarios);
+    let htmlContentToAppend = "";
+    for (let i = 0; i < localstoragecomentarios.length; i++) {
+        let com = localstoragecomentarios[i];
+
+        htmlContentToAppend += `
                 
                 <ul id="comments-list" class="comments-list">
                 <li>
-                  <div class="mail-level">
-                   <div class="avatar"><img src="img/`+i+`.PNG" alt=""></div>
+                  <div class="mail-level">`
+        if (i >= 4) {
+            htmlContentToAppend += `<div class="avatar"><img src="img/4.PNG" alt=""></div>`;
+        } else {
+            htmlContentToAppend += `<div class="avatar"><img src="img/` + i + `.PNG" alt=""></div>`;
+        }
+
+        htmlContentToAppend += `
                     <div class="box">
                       <div class="head-box">
-                       <h6 class="comment-name by-author"><a href="">`+com.user+`</a></h6>
-                        <span>`+com.dateTime+`&nbsp; &nbsp;</span>`
-            
-                        htmlContentToAppend += `<span><form action="">`
-                for (let j = 5; j >= 1; j--) {
-                    if (com.score != j)
-                        htmlContentToAppend += ` <input type="radio"name="` + i + `" class="star star` + j + `" id="star` + j + `"disabled><label for="star` + j + `" class="star star` + j + `"></label>`;
-                    else
-                        htmlContentToAppend += `<input type="radio"name="` + i + `" class="star star` + j + `" id="star` + j + `" checked disabled><label for="star` + j + `" class="star star` + j + `"></label>`;
-                }
-                htmlContentToAppend += `<br></form></span>
+                       <h6 class="comment-name by-author"><a href="">` + com.user + `</a></h6>
+                        <span>` + com.dateTime + `&nbsp; &nbsp;</span>`;
+
+        htmlContentToAppend += `<span><form action="">`;
+        for (let j = 5; j >= 1; j--) {
+            if (com.score != j)
+                htmlContentToAppend += ` <input type="radio"name="` + i + `" class="star star` + j + `" id="star` + j + `"disabled><label for="star` + j + `" class="star star` + j + `"></label>`;
+            else
+                htmlContentToAppend += `<input type="radio"name="` + i + `" class="star star` + j + `" id="star` + j + `" checked disabled><label for="star` + j + `" class="star star` + j + `"></label>`;
+        }
+        htmlContentToAppend += `<br></form></span>
                         <i class="fa fa-reply" aria-hidden="true"></i>
                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                         </div>
                       <div class="content">
-                        `+com.description+`
+                        ` + com.description + `
                       </div>
                     </div>
                   </div>
@@ -87,15 +90,48 @@ document.addEventListener("DOMContentLoaded", function(e){
                 </ul>
             
                 `
-               document.getElementById("comentarios").innerHTML = htmlContentToAppend;
-                       
-            }
-        }
-    });
-   
-}); 
-document.getElementById("comentar").addEventListener("click", function(e){
+        document.getElementById("comentarios").innerHTML = htmlContentToAppend;
+
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    cargarcomentarios();
+});
+
+document.getElementById("comentar").addEventListener("click", function (e) {
     e.preventDefault();
-    location.reload();
-        
+    let descrip = document.getElementById('Textarea1').value;
+    // Agrupando todos los radios en radioGroup
+    let radioGroup = document.getElementsByName('star');
+    let dataScore = 0;
+
+    let d = new Date();
+    let fechaHora = d.toString();
+    let formatFecha = fechaHora.replace(fechaHora.substring(fechaHora.lastIndexOf(":") + 3, fechaHora.length), "");
+
+    // recorriendo el radio group para detectar elemento marcado
+    for (var i = 0; i < radioGroup.length; i++) {
+        if (radioGroup[i].checked) {
+            dataScore = radioGroup[i].value;
+            // desmarcar el radio button
+            radioGroup[i].checked = false;
+        }
+    }
+    // alert(dataScore);
+    let newcomentario = {
+        "score": dataScore,
+        "description": descrip,
+        "user": localStorage.getItem('email'),
+        "dateTime": formatFecha
+    };
+
+    // Agregar nuevo comentario al array localstoragecomentarios
+    localstoragecomentarios.push(newcomentario);
+    // Actualizar localestarage con nuevo comentario
+    localStorage.setItem("datos", JSON.stringify(localstoragecomentarios));
+    cargarcomentarios();
+    document.getElementById('Textarea1').value = "";
+
+
 });
