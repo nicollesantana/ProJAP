@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function(e){
   btnLogout.onclick = function(){
      localStorage.removeItem('email');
      localStorage.removeItem('datos');
+     localStorage.removeItem('productos');
      window.location.href = '/index.html';
   }
 

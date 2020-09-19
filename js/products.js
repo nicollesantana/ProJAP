@@ -78,7 +78,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     if(categoriesArray != undefined){
         currentCategoriesArray = categoriesArray;
     }
-
+// guardar en el orden seleccionado
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
 
     //Muestro las categorías ordenadas
@@ -123,9 +123,11 @@ function search(){
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            categoriesArray = resultObj.data;
+         categoriesArray = resultObj.data;
+            localStorage.setItem("productos",JSON.stringify(categoriesArray));
+      
             //Muestro las categorías ordenadas
-            sortAndShowCategories(ORDER_ASC_BY_COST, resultObj.data);
+            sortAndShowCategories(ORDER_ASC_BY_COST, categoriesArray);
         }
     });
 

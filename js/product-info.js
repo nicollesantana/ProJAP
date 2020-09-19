@@ -8,15 +8,29 @@ function showInfoProduct(array) {
     for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
 
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `
+        if (i == 0) {
+            htmlContentToAppend = ` <div class="carousel-item active">
+        <img src="` + imageSrc + `" class="d-block w-100" alt="...">
+        </div>`
+        } else {
+            htmlContentToAppend += ` <div class="carousel-item">
+       <img src="` + imageSrc + `" class="d-block w-100" alt="...">
+       </div>`
+
+        }
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+
+
+        // htmlContentToAppend += `
+        // <div class="col-lg-3 col-md-4 col-6">
+        //     <div class="d-block mb-4 h-100">
+        //         <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+        //     </div>
+        // </div>
+        // `
+
+        // document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -24,7 +38,7 @@ function cargarcomentarios() {
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             productCategory = resultObj.data;
-            console.log(productCategory)
+            // console.log(productCategory)
 
             let categoryNameHTML = document.getElementById("categoryName");
             let categoryDescriptionHTML = document.getElementById("categoryDescription");
@@ -95,9 +109,48 @@ function cargarcomentarios() {
     }
 }
 
+
+function cargarcarruselRelatedProducts() {
+    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            infoProduct = resultObj.data; //cargando json 5678
+        }
+        // console.log(infoProduct.relatedProducts[1]);
+        allProducts = JSON.parse(localStorage.getItem("productos")); //carga el json all
+
+        imagen = []; //declaro array para guardar la ruta de las imagenes
+        for (let i = 0; i < infoProduct.relatedProducts.length; i++) {
+            let elementoArray = infoProduct.relatedProducts[i]
+            imagen.push(allProducts[elementoArray].imgSrc); //agregando ruta de las imagenes en el array
+            // console.log(imagen[1])
+            if (i == 0) {
+                htmlContentToAppend = ` <div class="carousel-item active col">
+    <a href="product-info.html" class="list-group-item-action">
+    <img src="` + imagen[i] + `" class="d-block w-100" alt="...">
+    </a></div>`
+            } else {
+                htmlContentToAppend += ` <div class="carousel-item col">
+   <a href="product-info.html" class="list-group-item-action">
+   <img src="` + imagen[i] + `" class="d-block w-100" alt="...">
+   </a>
+   </div>`
+
+            }
+        }
+        document.getElementById("imagenes").innerHTML = htmlContentToAppend;
+
+
+    });
+
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
     cargarcomentarios();
+    // cargarProductoRelacionado();
+    cargarcarruselRelatedProducts();
+
 });
+
 
 document.getElementById("comentar").addEventListener("click", function (e) {
     e.preventDefault();
